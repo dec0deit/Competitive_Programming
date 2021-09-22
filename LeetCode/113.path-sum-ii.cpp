@@ -18,22 +18,21 @@
  */
 class Solution {
 public:
-
     vector<vector<int>> v;
     void solve(TreeNode* root,vector<int> &v1,int targetSum){
         if(root == nullptr){
             return ;
         }
-        if(targetSum == root->val && root->left == nullptr && root->right == nullptr){
+        if(targetSum == root->val && root->left == nullptr
+                                && root->right == nullptr){
+
             v1.push_back(root->val);
             v.push_back(v1);
             v1.pop_back();
             return ;
         }
-        if( targetSum == 0){
-            return ;
-        }
         else{
+            
             v1.push_back(root->val);
             
             if(root->left != nullptr)
@@ -41,6 +40,7 @@ public:
             
             if(root->right != nullptr)
                 solve(root->right,v1,targetSum-root->val);
+
             v1.pop_back();
         }
     }
